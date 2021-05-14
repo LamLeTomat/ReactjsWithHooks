@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <h1>Welcome to react hooks</h1>
     </div>
   );
