@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.scss';
 import ColorBox from './components/ColorBox';
+import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
 function App() {
@@ -12,15 +13,21 @@ function App() {
   ])
   function handleTodoClick(todo){
     console.log(todo);
-    const index  = todoList.findIndex(x => x.id == todo.id);
+    const index  = todoList.findIndex(x => x.id === todo.id);
     if (index < 0 ) return; //Nếu k tìm thấy index thì trả về -1
     const newTodoList = [...todoList];
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
   }
+
+  function handleTodoFormSubmit(formValues) {
+    console.log('Form Submit:', formValues )
+  }
+  
   return (
     <div className="app">
       <h1>React hooks TodoList</h1>
+      <TodoForm onSubmit={handleTodoFormSubmit} />
       {/* <ColorBox/> */}
       <TodoList 
         todos={todoList}
@@ -30,25 +37,6 @@ function App() {
   );
 }
 
-// function TotoList(){
-//   const [todoList, setTodoList] = useState(['love', 'easy', 'frontend']);
-//   function removeTodo(index){
-//     const newTodoList = [...todoList]; //danh sách todoList mới
-//     newTodoList.splice(index, 1);
-//     setTodoList(newTodoList)
-//   }
-//   return(
-//     <ul className="todo-list">
-//       {todoList.map((todo, index) => (
-//         <li 
-//           key={todo.id}
-//           onClick={() => removeTodo(index)}
-//         >
-//           {todo.title}
-//         </li>
-//       ))}
-//     </ul>
-//   )
-// }
+
 
 export default App;
