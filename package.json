@@ -36,5 +36,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "query-string": "^7.0.0"
+  }
 }
