@@ -6,6 +6,7 @@ import PostList from './components/PostList';
 // import TodoForm from './components/TodoForm';
 // import TodoList from './components/TodoList';
 import queryString from 'query-string';
+import PostFiltersForm from './components/PostFiltersForm';
 
 function App() {
   //Khởi tạo mảng giá trị
@@ -24,8 +25,10 @@ function App() {
   const [filters, setFilters] = useState({
     _limit: 6,
     _page: 1,
+  
   })
 
+  //Call API
   useEffect(() => {
     async function fetchPostList() {
       try {
@@ -71,6 +74,16 @@ function App() {
     })
   }
   
+  function handleFiltersChange(newFilter) {
+    console.log('new filters', newFilter);
+    setFilters({
+      ...filters,
+      title_like: newFilter.searchTerm,
+      _page: 1,
+    });
+  }
+
+  
   return (
     <div className="app">
       <h1>React hooks Pagination</h1>
@@ -82,6 +95,7 @@ function App() {
         todos={todoList}
         onTodoClick={handleTodoClick} 
       /> */}
+      <PostFiltersForm onSubmit={handleFiltersChange} />
 
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange}/>
