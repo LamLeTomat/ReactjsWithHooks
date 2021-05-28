@@ -7,6 +7,7 @@ import PostList from './components/PostList';
 // import TodoList from './components/TodoList';
 import queryString from 'query-string';
 import PostFiltersForm from './components/PostFiltersForm';
+import Clock from './components/Clock';
 
 function App() {
   //Khởi tạo mảng giá trị
@@ -83,6 +84,8 @@ function App() {
     });
   }
 
+  const [showClock, setShowClock] = useState(true)
+
   
   return (
     <div className="app">
@@ -99,6 +102,10 @@ function App() {
 
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange}/>
+
+      { showClock && <Clock />}
+      <button onClick={() => {setShowClock(false)}}>Hide Clock</button>
+      <button onClick={() => {setShowClock(true)}}>Show Clock</button>
 
     </div>
   );
