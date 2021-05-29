@@ -8,6 +8,7 @@ import PostList from './components/PostList';
 import queryString from 'query-string';
 import PostFiltersForm from './components/PostFiltersForm';
 import Clock from './components/Clock';
+import BetterClock from './components/BetterClock';
 
 function App() {
   //Khởi tạo mảng giá trị
@@ -104,9 +105,10 @@ function App() {
       <Pagination pagination={pagination} onPageChange={handlePageChange}/>
 
       { showClock && <Clock />}
+      <BetterClock />
       <button onClick={() => {setShowClock(false)}}>Hide Clock</button>
       <button onClick={() => {setShowClock(true)}}>Show Clock</button>
-
+      
     </div>
   );
 }
